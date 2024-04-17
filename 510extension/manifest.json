@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Data Scraper and Bookmark Manager",
+    "version": "1.0",
+    "description": "Scrapes data, processes it through an API, and bookmarks pages under specific folders.",
+    "permissions": ["activeTab", "bookmarks"],
+    "host_permissions": ["https://api.yourdomain.com/*"],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "icons": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
