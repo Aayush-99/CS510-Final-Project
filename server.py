@@ -165,7 +165,9 @@ def call_llm(content):
         'Education', 'Food', 'Forums', 'Games', 'Health and Fitness',
         'Law and Government', 'News', 'Photography',
         'Social Networking and Messaging', 'Sports', 'Streaming Services',
-        'Travel', 'Sciences','Education' ]
+        'Travel', 'Sciences','Education', 'Research Paper', "Arts and Entertainment","Lifestyle",
+		"Environment and Nature", "History", "Literature", "Fashion and Beauty", "Real Estate", 
+		"Finance and Investment", "Technology Reviews", "DIY and Crafts", "Pets and Animals", "Automotive"]
 
     text = f'''"Can you go over this text : {website_cleaned_data} \
         Can you categorize this into these following categories : {category_list} . Answer only within these options. Answer only in 1 word - category name"'''
