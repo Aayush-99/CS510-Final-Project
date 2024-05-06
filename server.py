@@ -1,9 +1,102 @@
+# from flask import Flask, request, jsonify
+# from flask_cors import CORS, cross_origin
+# import subprocess
+
+# app = Flask(__name__)
+# CORS(app)  # Enable CORS for all routes
+
+# @app.route('/process', methods=['POST'])
+# @cross_origin()  # Specific route CORS enablement
+# def process_data():
+#     try:
+#         content = request.json['content']
+#         print("Received content:", content)
+#         response = call_llm(content)
+#         print("Response:", response)
+#         return jsonify({'label': response})
+#     except Exception as e:
+#         print("Error handling request:", str(e))
+#         return jsonify({'error': str(e)}), 500
+#     # content = request.json['content']
+#     # response = call_llm(content)
+#     # return jsonify({'label': 'test'})
+
+# def call_llm(content):
+#     return "Processed: " + content
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+
+# Importing flask module in the project is mandatory
+# An object of Flask class is our WSGI application.
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
+
+import nltk 
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize, sent_tokenize 
+
 import os
 from litellm import completion
+import json
+
+
+app = Flask(__name__)
+CORS(app, resources={r"/process": {"origins": "*"}})  # Explicitly setting CORS for the process route
+
+@app.route('/')
+def hello_world():
+	return 'Hello World'
+
+
+@app.route('/process', methods=['POST']) # Specific route CORS enablement
+def process_data():
+    # content = request.json['content']
+    # print("Received content:", content)
+
+    try:
+        # Extract content sent from the client
+        content = request.json['content']
+		
+        if len(content) == 22:
+            print("empty string : --->",content)
+        else:
+            print("Received content:",len(content))  # Log the received content
+
+        # Process the content using a simulated LLM function
+        if len(content)!=22:
+            response = call_llm(content)
+            with open("example.txt", "w") as file:
+                file.write(response)
+        # print(label_history)
+        # print(len(content))
+        elif len(content) == 22:
+            print('inside')
+            # response = label_history[0]
+            with open("example.txt", "r") as file:
+                file_contents = file.read()
+            print(file_contents)
+            response = file_contents
+            with open("example.txt", "w") as file:
+                file.write("")
+				
+        print("Response from LLM:", response)  # Log the LLM response
+        # response = "Worked!"
+        # Return the processed response as JSON
+        return jsonify({'label': response})
+
+    except Exception as e:
+        print("Error handling request:", str(e))  # Log any errors
+        return jsonify({'error': str(e)}), 500
+
+    # try:
+    #     content = request.json['content']
+    #     print(content) 
+    #     response = "Sample"
+    #     return jsonify({'label': response}), 200, {'Access-Control-Allow-Origin': '*'}
+    # except Exception as e:
+    #     return jsonify({'error': str(e)}), 500, {'Access-Control-Allow-Origin': '*'}
+
 
 def summarize(text):
 # Tokenizing the text 
@@ -54,39 +147,11 @@ def summarize(text):
 	# print(summary)
 	return summary
 
-app = Flask(__name__)
-CORS(app, resources={r"/process": {"origins": "*"}})  # Explicitly setting CORS for the process route
-
-@app.route('/')
-def hello_world():
-	return 'Hello World'
-
-@app.route('/process', methods=['POST']) # Specific route CORS enablement
-def process_data():
-    try:
-        # Extract content sent from the client
-        content = request.json['content']
-        print("Received content:", content)  # Log the received content
-
-        # Process the content using a simulated LLM function
-        response = call_llm(content)
-        print("Response from LLM:", response)  # Log the LLM response
-        #response = "Worked!"
-        # Return the processed response as JSON
-        return jsonify({'label': response})
-    except Exception as e:
-        print("Error handling request:", str(e))  # Log any errors
-        return jsonify({'error': str(e)}), 500
-    # try:
-    #     content = request.json['content']
-    #     response = "Sample"
-    #     return jsonify({'label': response}), 200, {'Access-Control-Allow-Origin': '*'}
-    # except Exception as e:
-    #     return jsonify({'error': str(e)}), 500, {'Access-Control-Allow-Origin': '*'}
-    
 def call_llm(content):
     # Simulated LLM processing
     website_cleaned_data = summarize(content)
+	
+    # print(website_cleaned_data)
 	
     ## set ENV variables
     os.environ["COHERE_API_KEY"] = "nc8lMiK9Sw6sb5JDy14W1rCYGmKV1eN7wCbC0Iah"
