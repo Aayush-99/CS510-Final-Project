@@ -154,7 +154,7 @@ def call_llm(content):
     # print(website_cleaned_data)
 	
     ## set ENV variables
-    os.environ["COHERE_API_KEY"] = "nc8lMiK9Sw6sb5JDy14W1rCYGmKV1eN7wCbC0Iah"
+    os.environ["COHERE_API_KEY"] = "ENTER_YOUR_API_KEY_HERE"
 
     # raw_data = ""
     # summarize website data here :
