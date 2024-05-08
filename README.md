@@ -5,15 +5,15 @@ Team Members
 - Suvodeep Saibal Sinha (sssinha2@illinois.edu)
 
 
-# Coherence - AI-Powered Bookmarking Tool
+# Bookmark.ai - AI-Powered Bookmarking Tool
 
 ## Introduction
-Coherence is an AI-powered bookmarking tool designed to enhance how users manage and categorize their web content. By leveraging advanced machine learning techniques, Coherence automates the process of bookmark categorization, offering a dynamic and intuitive user experience. This tool simplifies content management by providing smart, AI-generated suggestions for bookmark categories, which users can customize as needed.
+Bookmark.ai is an AI-powered bookmarking tool designed to enhance how users manage and categorize their web content. By leveraging advanced LLMs, Bookmark.ai automates the process of bookmark categorization, offering a dynamic and intuitive user experience. This tool simplifies content management by providing smart, AI-generated suggestions for bookmark categories, which users can customize as needed.
 
 ## Installation and Usage
 
 ### Step 1: Clone the Repository
-Clone the repository to your local machine to get started with Coherence.
+Clone the repository to your local machine to get started with Bookmark.ai.
 ```
 git clone https://github.com/your-repository/coherence.git
 cd coherence
@@ -47,4 +47,4 @@ With the server running, open Google Chrome, navigate to any website of your cho
 If the suggested label isn't quite right or if you want to customize it, simply edit the label directly in the textbox provided within the extension's popup.
 
 ## Conclusion
-Enjoy a more organized and efficient web browsing experience with Coherence, your AI-powered assistant for managing and categorizing bookmarks in real-time!
+Enjoy a more organized and efficient web browsing experience with Bookmark.ai, your AI-powered assistant for managing and categorizing bookmarks in real-time!
