@@ -15,7 +15,7 @@ Bookmark.ai is an AI-powered bookmarking tool designed to enhance how users mana
 ### Step 1: Clone the Repository
 Clone the repository to your local machine to get started with Bookmark.ai.
 ```
-git clone https://github.com/your-repository/coherence.git
+git clone https://github.com/your-repository/CS510-Final-Project.git
 cd coherence
 ```
 
